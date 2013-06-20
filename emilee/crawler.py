@@ -40,18 +40,13 @@ def get_context(url, name):
 
 
 def get_db():
-    db = psycopg2.connect(host="mrleesvr", database="mrlee", user="mrlee", password="altmxjfl")
+    db = psycopg2.connect(host="", database="", user="", password="")
     return db
 
 def document_counts(text):
     db = None
     try :
         db = get_db()
-        # db = MySQLdb.connect(host="mrleesvr", # your host, usually localhost
-        #                      user="redd0g", # your username
-        #                      passwd="akdptmxmfhek", # your password
-        #                      db="redd0g",
-        #                      charset="utf8") # name of the data base
         cur = db.cursor()
         cur.execute("SELECT count FROM word_count where word = \'%s\'" % text)
     except:
@@ -71,12 +66,6 @@ def document_counts(text):
         cnt = int(item.childNodes[0].nodeValue)
         try :
             db = get_db()
-            # db = MySQLdb.connect(host="mrleesvr", # your host, usually localhost
-            #                      user="redd0g", # your username
-            #                      passwd="akdptmxmfhek", # your password
-            #                      db="redd0g",
-            #                      charset="utf8") # name of the data base
-            cur = db.cursor()
             cur.execute("INSERT INTO word_count(word, count) values (\'%s\', %d)" % (text, cnt))
             db.commit()
         except:

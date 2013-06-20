@@ -4,7 +4,7 @@ import xmlrpclib
 
 
 def core_postagging(text):
-    _RPC = xmlrpclib.Server("http://17.buzzni.com:8220/xmlrpc")
+    _RPC = xmlrpclib.Server("")
     try:
         result = _RPC.BuzzniTagger.postagging(text)
         #
@@ -14,7 +14,7 @@ def core_postagging(text):
     return result
 
 def core_jossegment(text):
-    _RPC = xmlrpclib.Server("http://17.buzzni.com:8220/xmlrpc")
+    _RPC = xmlrpclib.Server("")
     try:
 
         result = _RPC.BuzzniTagger.jossegment(text)
